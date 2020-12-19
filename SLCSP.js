@@ -32,9 +32,27 @@ Promise.all([
       ZipsSet_ZipArray[i][j] = [...new Set(ZipsSet_ZipArray[i][j].map((x) => { return x }))];
   return ZipsSet_ZipArray;
 }).then((ZipCode_RateAreas_Array) => {
-  for (let i = 0; i < 10; i++) { console.log(`ZipCode_RateAreas_Array[${i}]`, ZipCode_RateAreas_Array[i]); }
+  // for (let i = 0; i < 10; i++) { console.log(`ZipCode_RateAreas_Array[${i}]`, ZipCode_RateAreas_Array[i]); }
   const Plans_Silver_Array = Plans_Array.filter(Plan_Array => Plan_Array.includes('Silver'));
-  for (let i = 0; i < 10; i++) { console.log(`Plans_Silver_Array[${i}]`, Plans_Silver_Array[i]); }
-  const RateArea_Rate_Array = Plans_Silver_Array.map((Plan_Silver)=>{return [Plan_Silver[4],Plan_Silver[3]]});
-  for (let i = 0; i < 10; i++) { console.log(`RateArea_Rate_Array[${i}]`, RateArea_Rate_Array[i]); }
+  // for (let i = 0; i < 10; i++) { console.log(`Plans_Silver_Array[${i}]`, Plans_Silver_Array[i]); }
+  const RateArea_Rate_Array = Plans_Silver_Array.map(Plan_Silver => { return [Plan_Silver[4], Plan_Silver[3]] });
+  // for (let i = 0; i < 10; i++) { console.log(`RateArea_Rate_Array[${i}]`, RateArea_Rate_Array[i]); }
+  const RateArea_Rates_Array = [... new Set(RateArea_Rate_Array.map(RateArea_Rate => { return [RateArea_Rate[0], []] }))];
+  // for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
+  RateArea_Rate_Array.forEach(RateArea_Rate => {
+    for (let i = 0; i < RateArea_Rates_Array.length; i++) {
+      if (RateArea_Rate[0] == RateArea_Rates_Array[i][0])
+        RateArea_Rates_Array[i][1].push(RateArea_Rate[1]);
+    }
+  });
+  for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
+  for (let i = 0; i < ZipCode_RateAreas_Array.length; i++) {
+    for (let j = 0; j < ZipCode_RateAreas_Array[i].length; j++) {
+      for (let k = 0; k < RateArea_Rates_Array.length; k++) {
+        if (ZipCode_RateAreas_Array[i][j][0]==RateArea_Rates_Array[k][0]) {
+          
+        }
+      }
+    }
+  }
 })
