@@ -50,9 +50,10 @@ Promise.all([
     for (let j = 0; j < ZipCode_RateAreas_Array[i].length; j++) {
       for (let k = 0; k < RateArea_Rates_Array.length; k++) {
         if (ZipCode_RateAreas_Array[i][j][0]==RateArea_Rates_Array[k][0]) {
-          
+          ZipCode_RateAreas_Array[i][j][1].push(RateArea_Rates_Array[k][1])
         }
       }
     }
   }
+  for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
 })
