@@ -32,7 +32,7 @@ Promise.all([
       SlcspZipsSet_ZipArray[i][j] = [...new Set(SlcspZipsSet_ZipArray[i][j].map((x) => { return x }))];
   return SlcspZipsSet_ZipArray;
 }).then((SlcspZipCode_RateAreas_Array) => {
-  // for (let i = 0; i < 10; i++) { console.log(`SlcspZipCode_RateAreas_Array[${i}]`, SlcspZipCode_RateAreas_Array[i]); }
+  for (let i = 0; i < 10; i++) { console.log(`SlcspZipCode_RateAreas_Array[${i}]`, SlcspZipCode_RateAreas_Array[i]); }
   const Plans_Silver_Array = Plans_Array.filter(Plan_Array => Plan_Array.includes('Silver'));
   // for (let i = 0; i < 10; i++) { console.log(`Plans_Silver_Array[${i}]`, Plans_Silver_Array[i]); }
   const RateArea_Rate_Array = Plans_Silver_Array.map(Plan_Silver => { return [Plan_Silver[4], Plan_Silver[3]] });
@@ -45,20 +45,10 @@ Promise.all([
         RateArea_Rates_Array[i][1].push(RateArea_Rate[1]);
     }
   });
-  // for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
-  for (let i = 0; i < SlcspZipCode_RateAreas_Array.length; i++) {
-    for (let j = 0; j < SlcspZipCode_RateAreas_Array[i].length; j++) {
-      // console.log(`SlcspZipCode_RateAreas_Array[${i}][${j}]`, SlcspZipCode_RateAreas_Array[i][j]);
-      for (let k = 0; k < RateArea_Rates_Array.length; k++) {
-        if (SlcspZipCode_RateAreas_Array[i][j][1]==RateArea_Rates_Array[k][0]) {
-          // console.log(`SlcspZipCode_RateAreas_Array[${i}][${j}][1]==RateArea_Rates_Array[${k}][0]`, SlcspZipCode_RateAreas_Array[i][j][1], RateArea_Rates_Array[k][0]);
-          // console.log(`SlcspZipCode_RateAreas_Array[${i}][${j}][1], RateArea_Rates_Array[${k}][1]`, SlcspZipCode_RateAreas_Array[i][j][1], RateArea_Rates_Array[k][1]);
-          // SlcspZipCode_RateAreas_Array[i][j][1] = RateArea_Rates_Array[k][1];
-          SlcspZipCode_RateAreas_Array[i][j] = [SlcspZipCode_RateAreas_Array[i][j][0], RateArea_Rates_Array[k]];
-        }
-      } 
-    }
+  for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
+  const SlcspZipCode_Rates_Array = [...new Set(SlcspZipCode_RateAreas_Array.map(SLCSP_Entry => { return [SLCSP_Entry[0], []] }))];
+  for (let i = 0; i < 10; i++) { console.log(`SlcspZipCode_Rates_Array[${i}]`, SlcspZipCode_Rates_Array[i]); }
+  for (let i = 0; i < RateArea_Rates_Array.length; i++) {
+
   }
-  // for (let i = 0; i < 10; i++) { console.log(`RateArea_Rates_Array[${i}]`, RateArea_Rates_Array[i]); }
-  for (let i = 0; i < 10; i++) { console.log(`SlcspZipCode_RateAreas_Array[${i}]`, SlcspZipCode_RateAreas_Array[i]); }
 })
