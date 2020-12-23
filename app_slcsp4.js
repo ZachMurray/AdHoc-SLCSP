@@ -44,15 +44,4 @@ Promise.all([
   ZipCode_RateArea_Map_Promise('zips.csv').then(value => { ZipCode_RateArea_Map = value }),
   RateAreaSilvers_Rates_Promise('plans.csv').then(value => { RateAreaSilvers_Rates_Map = value })
 ]).then(() => {
-  const SlcspZips_Rates_Map = new Map(SlcspZips_Rates_Array.map(SlcspZip_Entry => [SlcspZip_Entry[0], []]))
-  for (let [key] of SlcspZips_Rates_Map) {
-    const RateAreas = ZipCode_RateArea_Map.get(key)
-    const Rates = []
-    for (let RateArea of RateAreas)
-      if (RateAreaSilvers_Rates_Map.has(RateArea))
-        Rates.push(RateAreaSilvers_Rates_Map.get(RateArea));
-
-    SlcspZips_Rates_Map.set(key, Rates)
-  }
-  console.log(SlcspZips_Rates_Map)
 })
