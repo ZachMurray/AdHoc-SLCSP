@@ -27,5 +27,11 @@ Promise.all([
   .then(() => {
     // console.log(SlcspCsv_Array)
     // console.log(ZipsCsv_Map)
-    console.log(PlansCsv_Map)
+    // console.log(PlansCsv_Map)
+    // const Zips_Plans_Map = new Map(SlcspCsv_Array.map(Slcsp=>[Slcsp[0],[]]));
+    const Zips_Plans_Map = new Map(SlcspCsv_Array);
+    console.log(Zips_Plans_Map)
+    ZipsCsv_Map.forEach((value, key, map) => {
+      
+    })
   })
